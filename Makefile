@@ -23,11 +23,17 @@ usage-secret-decrypt:
 usage-secret-edit:
 	aws-vault exec ${PROFILE} -- sops usage/secrets.json
 
+setup-init:
+	${TERRAFORM_COMMAND} -chdir=setup init
+
 setup-apply:
 	${TERRAFORM_COMMAND} -chdir=setup apply
 
 setup-destroy:
 	${TERRAFORM_COMMAND} -chdir=setup apply -destroy
+
+usage-init:
+	${TERRAFORM_COMMAND} -chdir=usage init
 
 usage-apply:
 	${TERRAFORM_COMMAND} -chdir=usage apply
